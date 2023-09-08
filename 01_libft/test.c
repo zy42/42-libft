@@ -1,10 +1,14 @@
 #include "libft.h"
 #include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
 int	ft_isalnum(int c);
+int	ft_isascii(int c);
+int	ft_isprint(int c);
+size_t  ft_strlen(const char *s);
 
 int	main()
 {
@@ -35,4 +39,36 @@ int	main()
                 char *result = ((isalnum(c) > 0) == (ft_isalnum(c) > 0)) ? "PASSED": "FAILED";
                 printf("Input: %d; Expect: %d; Result: %d; Test: %s\n", c, isalnum(c), ft_isalnum(c), result);                testcases++;
         }
+
+	printf("ft_isascii: \n");
+        testcases = "1j89\nxc.";
+        while (*testcases)
+        {
+                char c = *testcases;
+                char *result = ((isascii(c) > 0) == (ft_isascii(c) > 0)) ? "PASSED": "FAILED";
+                printf("Input: %d; Expect: %d; Result: %d; Test: %s\n", c, isascii(c), ft_isascii(c), result);                testcases++;
+        }
+
+	printf("ft_isprint: \n");
+        testcases = "1s7F.P\n";
+        while (*testcases)
+        {
+                char c = *testcases;
+                char *result = ((isprint(c) > 0) == (ft_isprint(c) > 0)) ? "PASSED": "FAILED";
+                printf("Input: %d; Expect: %d; Result: %d; Test: %s\n", c, isprint(c), ft_isprint(c), result);                testcases++;
+        }
+
+	printf("ft_strlen: \n");
+        const char *str_arr[] = 
+	{
+		"First","Second","Third entry",NULL
+	};
+	int index = 0;
+        while (str_arr[index] != NULL)
+        {
+                const	char *c = str_arr[index];
+                char *result = (strlen(c) == ft_strlen(c)) ? "PASSED": "FAILED";
+                printf("Input: %s; Expect: %ld; Result: %ld; Test: %s\n", c, strlen(c), ft_strlen(c), result);
+		index++;
+	}
 }
