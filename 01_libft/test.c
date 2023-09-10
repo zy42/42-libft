@@ -9,6 +9,7 @@ int	ft_isalnum(int c);
 int	ft_isascii(int c);
 int	ft_isprint(int c);
 size_t  ft_strlen(const char *s);
+void    *ft_memset(void *s, int c, size_t n);
 
 int	main()
 {
@@ -71,4 +72,17 @@ int	main()
                 printf("Input: %s; Expect: %ld; Result: %ld; Test: %s\n", c, strlen(c), ft_strlen(c), result);
 		index++;
 	}
+
+	printf("ft_memset: \n");
+	int c = 'X';
+	void *dest = "test string";
+	int n[7] = {5, 0,1,2,3,4, -1};
+	index = 0;
+        while (n[index] > 0)
+        {
+                size_t len = n[index];
+                char *result = (memset(dest,c,len) == ft_memset(dest,c,len)) ? "PASSED": "FAILED";
+                printf("Input: %c; Expect: %p; Result: %p; Test: %s\n", c, memset(dest,c,len), ft_memset(dest,c,len), result);
+                index++;
+        }
 }
