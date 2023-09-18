@@ -6,7 +6,7 @@
 #    By: yzeng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 18:48:48 by yzeng             #+#    #+#              #
-#    Updated: 2023/09/11 19:01:08 by yzeng            ###   ########.fr        #
+#    Updated: 2023/09/18 23:23:52 by zengying         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRCS    = ft_memset.c\
           ft_isalnum.c\
           ft_isascii.c\
           ft_isprint.c\
+	  ft_strlcat.c\
+	  ft_strlcpy.c\
 
 OBJS    = $(SRCS:.c=.o)
 
