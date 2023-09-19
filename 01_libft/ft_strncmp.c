@@ -6,12 +6,12 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 21:17:17 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/19 21:27:19 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/19 22:52:47 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	if (n == 0)
 		return (0);

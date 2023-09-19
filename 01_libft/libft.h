@@ -6,7 +6,7 @@
 /*   By: zengying <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 22:41:14 by zengying          #+#    #+#             */
-/*   Updated: 2023/09/19 21:13:52 by zengying         ###   ########.fr       */
+/*   Updated: 2023/09/19 22:53:19 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-int		strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif
