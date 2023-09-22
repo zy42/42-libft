@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 20:22:31 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/23 03:48:25 by zengying         ###   ########.fr       */
+/*   Created: 2023/09/22 18:15:10 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/23 02:34:56 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
+	unsigned char	*p_s1;
+	unsigned char	*p_s2;
+	size_t			counter;	
 
-	i = 0;
-	while (s[i])
+	counter = 0;
+	p_s1 = (unsigned char *)s1;
+	p_s2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (counter < n)
 	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
-		i++;
+		if (p_s1[counter] != p_s2[counter])
+			return (p_s1[counter] - p_s2[counter]);
+		counter++;
 	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
 	return (0);
 }
 
@@ -33,7 +37,6 @@ char	*ft_strchr(const char *s, int c)
 
 int	main()
 {
-	const char src[] = "teste";
-	printf("%p\n", strchr(src,'\0'));
-	printf("%p\n", ft_strchr(src,'\0'));
+	printf("%i\n", memcmp("t\200", "t\0", 2));
+	printf("%i\n", ft_memcmp("t\200", "t\0", 2));
 }*/

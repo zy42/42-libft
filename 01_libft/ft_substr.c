@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 20:22:31 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/23 03:48:25 by zengying         ###   ########.fr       */
+/*   Created: 2023/09/23 03:38:18 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/23 04:43:10 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	Allocates (with malloc(3)) and returns a substrin from the string ’s’.
+**	The substring begins at index ’start’ and is of maximum size ’len’.
+*/
+
 #include "libft.h"
+#include "stdlib.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	char	*result;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
-	return (0);
+	result = (char *) malloc(len * sizeof(char));
+	result = ft_memcpy(result, s + start, len);
+	return (result);
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int	main()
 {
-	const char src[] = "teste";
-	printf("%p\n", strchr(src,'\0'));
-	printf("%p\n", ft_strchr(src,'\0'));
+	char const *s = "test124";
+	printf("%s\n",ft_substr(s, 2,5));
 }*/

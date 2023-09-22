@@ -1,39 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 20:22:31 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/23 03:48:25 by zengying         ###   ########.fr       */
+/*   Created: 2023/09/23 02:42:05 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/23 04:37:18 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	is_space(char c)
 {
+	return (c == 32 || (c >= 9 && c <= 13));
+}
+
+int	ft_atoi(const char *nptr)
+{
+	int	result;
+	int	sign;
 	int	i;
 
 	i = 0;
-	while (s[i])
+	result = 0;
+	sign = 1;
+	while (is_space(nptr[i]))
 	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
 		i++;
 	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
-	return (0);
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (ft_isdigit(nptr[i]))
+	{
+		result = result * 10 + nptr[i] - '0';
+		i++;
+	}
+	return (result * sign);
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int	main()
 {
-	const char src[] = "teste";
-	printf("%p\n", strchr(src,'\0'));
-	printf("%p\n", ft_strchr(src,'\0'));
+	printf("%i\n", atoi("   +12464"));
+	printf("%i\n", ft_atoi("   +12464"));
 }*/
