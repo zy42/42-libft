@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 19:20:30 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/25 19:32:30 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/25 22:51:03 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -19,5 +19,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	ft_putchar("\n", fd);
+	ft_putchar_fd('\n', fd);
 }
