@@ -6,15 +6,10 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 02:42:05 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/23 04:37:18 by zengying         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:01:46 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
-int	is_space(char c)
-{
-	return (c == 32 || (c >= 9 && c <= 13));
-}
 
 int	ft_atoi(const char *nptr)
 {
@@ -25,10 +20,8 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	result = 0;
 	sign = 1;
-	while (is_space(nptr[i]))
-	{
+	while ((nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13)))
 		i++;
-	}
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
