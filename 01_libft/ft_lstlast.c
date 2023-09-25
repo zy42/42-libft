@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 23:05:25 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/26 00:37:33 by zengying         ###   ########.fr       */
+/*   Created: 2023/09/26 01:20:00 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/26 01:22:17 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
-#include <stdlib.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+/* Returns the last node of the list.
+ * lst: The beginning of the list.
+ */
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	void	*result;
-
-	result = (void *) malloc(nmemb * size);
-	if (!result)
+	if (!lst)
 		return (NULL);
-	ft_bzero(result, nmemb);
-	return (result);
+	while (lst->next)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	int size = 8254;
-	void * d1 = calloc(0,0);
-        void * d2 = ft_calloc(0,0);
-	printf("%p\n%p\n",d1,d2);
-}*/

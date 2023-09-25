@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 23:05:25 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/26 00:37:33 by zengying         ###   ########.fr       */
+/*   Created: 2023/09/26 00:23:02 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/26 00:58:30 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*result;
+/* Allocates (with malloc(3)) and returns a new node.
+ * The member variable ’content’ is initialized with
+ * the value of the parameter ’content’. The variable
+ * ’next’ is initialized to NULL.
+ */
 
-	result = (void *) malloc(nmemb * size);
-	if (!result)
-		return (NULL);
-	ft_bzero(result, nmemb);
-	return (result);
-}
-/*
-#include <stdio.h>
-int	main()
+t_list	*ft_lstnew(void *content)
 {
-	int size = 8254;
-	void * d1 = calloc(0,0);
-        void * d2 = ft_calloc(0,0);
-	printf("%p\n%p\n",d1,d2);
-}*/
+	t_list	*output;
+
+	output = malloc(sizeof(t_list));
+	if (!output)
+		return (NULL);
+	output->content = content;
+	output->next = NULL;
+	return (output);
+}
