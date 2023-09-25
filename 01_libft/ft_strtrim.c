@@ -6,10 +6,11 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 02:03:40 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/24 05:27:08 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/25 17:51:46 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdlib.h>
 
 /* Allocates (with malloc(3)) and returns a copy of 's1' with 
 ** the characters specified in ’set’ removed
