@@ -6,39 +6,37 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:27:19 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/23 04:07:49 by zengying         ###   ########.fr       */
+/*   Updated: 2023/09/24 04:43:26 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(char const *haystack, char const *needle, size_t n)
 {
-	char	*p_big;
 	size_t	slider;
 
-	slider = 0;
-	if (!*little)
-		return ((char *)big);
-	while (*big && *(little + slider) && len > 0)
+	if (!haystack && !n)
+		return (NULL);
+	if (!*needle)
+		return ((char *)haystack);
+	while (*haystack && n--)
 	{
-		if (*big == *(little + slider))
+		slider = 0;
+		while (*(needle + slider) && *(haystack + slider) == *(needle + slider)
+			&& slider <= n)
 		{
-			p_big = (char *)big;
+			if (!*(needle + slider + 1))
+				return ((char *)haystack);
 			slider++;
 		}
-		else
-			slider = 0;
-		big++;
-		len--;
+		haystack++;
 	}
-	if (slider == ft_strlen(little))
-		return (p_big - slider + 1);
-	return (0);
+	return (NULL);
 }
 /*
 int main()
 {
-	const char *big = "abcdefgh";
-	const char *little = "abc";
-	printf("%s\n",ft_strnstr(big, little, 4));
+	char haystack[30] = "aaabcabcd";
+	char needle[10] = "aabc";
+	printf("%s\n", ft_strnstr(haystack, needle, -1));
 }*/

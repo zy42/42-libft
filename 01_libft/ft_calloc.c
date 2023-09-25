@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 20:22:31 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/24 04:07:46 by yzeng            ###   ########.fr       */
+/*   Created: 2023/09/23 23:05:25 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/24 03:47:56 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
+	void	*result;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *) s + i);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *) s + i);
-	return (NULL);
+	result = (void *) malloc(nmemb * size);
+	if (!result)
+		return (NULL);
+	ft_bzero(result, nmemb);
+	return (result);
 }
-
 /*
 #include <stdio.h>
-#include <string.h>
-
 int	main()
 {
-	const char src[] = "tripouille";
-	printf("%c\n", 't' + 256);
-	printf("%p\n", strchr(src,'t' + 256));
-	printf("%p\n", ft_strchr(src,'t' + 256));
+	int size = 8254;
+	void * d1 = calloc(0,0);
+        void * d2 = ft_calloc(0,0);
+	printf("%p\n%p\n",d1,d2);
 }*/

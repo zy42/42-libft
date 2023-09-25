@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 20:22:31 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/24 04:07:46 by yzeng            ###   ########.fr       */
+/*   Created: 2023/09/24 00:32:02 by yzeng             #+#    #+#             */
+/*   Updated: 2023/09/24 03:45:15 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	char	*result;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *) s + i);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *) s + i);
-	return (NULL);
+	result = (char *) malloc((ft_strlen(s) + 1) * sizeof(const char));
+	if (!result)
+		return (NULL);
+	ft_memcpy(result, s, ft_strlen(s));
+	result[ft_strlen(s)] = '\0';
+	return (result);
 }
 
 /*
 #include <stdio.h>
-#include <string.h>
-
 int	main()
 {
-	const char src[] = "tripouille";
-	printf("%c\n", 't' + 256);
-	printf("%p\n", strchr(src,'t' + 256));
-	printf("%p\n", ft_strchr(src,'t' + 256));
+	const char	str[] = "some string";
+	printf("%s\n", ft_strdup(str));
 }*/

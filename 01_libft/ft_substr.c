@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 03:38:18 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/23 04:43:10 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/24 05:25:12 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,33 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*result;
 
-	result = (char *) malloc(len * sizeof(char));
-	result = ft_memcpy(result, s + start, len);
+	if (!s)
+		return (NULL);
+	result = (char *) malloc((len + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	if (start < ft_strlen(s))
+	{
+		if (len >= ft_strlen(s))
+		{
+			result = ft_memcpy(result, s + start, ft_strlen(s));
+			result[ft_strlen(s)] = '\0';
+		}
+		else
+		{
+			result = ft_memcpy(result, s + start, len);
+			result[len] = '\0';
+		}
+		return (result);
+	}
+	result[0] = '\0';
 	return (result);
 }
-
 /*
+#include <string.h>
 int	main()
 {
-	char const *s = "test124";
-	printf("%s\n",ft_substr(s, 2,5));
+	//char const	str[] = "ABCDE";
+	char * s = ft_substr("tripouille", 100, 1);;
+	printf("%s\n",s);
 }*/
