@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 02:03:40 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/25 17:51:46 by zengying         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:11:23 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -34,28 +34,28 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		j;
 
 	i = 0;
-	result = (char *) malloc((ft_strlen(s1) + 1) * sizeof(char));
+	while (to_remove(s1[i], set) && s1[i])
+		i++;
+	j = ft_strlen(s1);
+	while (to_remove(s1[j - 1], set) && j > i)
+		j--;
+	result = (char *) malloc((j - i + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	while (s1[i])
+	if (i == j)
+		result = "";
+	else
 	{
-		if (to_remove(s1[i], set))
-			i++;
-		else
-			break ;
+		ft_memcpy(result, s1 + i, j - i);
+		result[j - i] = '\0';
 	}
-	j = i;
-	while (s1[j] && !to_remove(s1[j], set))
-		j++;
-	ft_memcpy(result, s1 + i, j - i);
-	result[j - i] = '\0';
 	return (result);
 }
 
 /*
 int main()
 {
-	char const *set = " \t";
-	char const *str = " \t Hello !\t";
+	char const *set = " ";
+	char const *str = "        ";;
 	printf("%s\n",ft_strtrim(str,set));
 }*/
