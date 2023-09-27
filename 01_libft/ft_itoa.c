@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 06:03:19 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/25 19:04:04 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/27 14:29:09 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -41,9 +41,13 @@ char	*set_memory(void)
 
 	str = (char *) malloc (sizeof(char) * (12));
 	if (!str)
-		return (0);
+	{
+		free(str);
+		return (NULL);
+	}
 	return (str);
 }
+
 
 char	*ft_itoa(int n)
 {
@@ -54,11 +58,13 @@ char	*ft_itoa(int n)
 	index = 0;
 	p_index = &index;
 	str = set_memory();
+	if (!str)
+		return (NULL);
 	if (n < 0)
 	{
-		if (n <= -2147483648)
+		if (n == -2147483648)
 		{
-			str = "-2147483648\0";
+			ft_memcpy(str, "-2147483648",12);
 			return (str);
 		}
 		str[*p_index] = '-';

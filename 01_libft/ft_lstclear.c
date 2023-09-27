@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 19:23:49 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/26 19:39:47 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/27 16:15:49 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,10 +22,9 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	while (*lst->next)
-	{
-		ft_lstdelone(*lst, del);
-		*lst = *lst->next;
-	}
-	*lst = NULL;		
+	if (!lst || !del || !(*lst))
+		return ;
+	ft_lstclear(&(*lst)->next, del);
+	ft_lstdelone(*lst, del);
+	*lst = NULL;
 }

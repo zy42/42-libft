@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 02:03:40 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/26 19:11:23 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/27 16:26:06 by yzeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -43,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!result)
 		return (NULL);
 	if (i == j)
-		result = "";
+		ft_memcpy(result, "", 1);
 	else
 	{
 		ft_memcpy(result, s1 + i, j - i);
@@ -55,7 +55,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int main()
 {
-	char const *set = " ";
-	char const *str = "        ";;
+	char const *set = "";
+	char const *str = "";
 	printf("%s\n",ft_strtrim(str,set));
 }*/

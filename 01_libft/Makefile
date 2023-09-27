@@ -6,7 +6,7 @@
 #    By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 00:15:55 by yzeng             #+#    #+#              #
-#    Updated: 2023/09/26 19:31:22 by yzeng            ###   ########.fr        #
+#    Updated: 2023/09/27 13:06:52 by yzeng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SOURCES = \
 	ft_putendl_fd.c ft_putnbr_fd.c
 BSOURCES = \
 	   ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
-	   ft_lstdelone.c ft_lstclear.c\
+	   ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c\
 
 OBJECTS = $(SOURCES:.c=.o)
 BOBJECTS = $(BSOURCES:.c=.o)
