@@ -1,4 +1,3 @@
 # SCHOOL42
-Projects done at 42 School
 
-01_libft aims at writing our own library (and re-writing useful functions) from scratch.
+01_libft involves replicating functions in <ctype.h>, <string.h>, <stdlib.h>, and implementing other useful functions for string and linked list manipulation.
