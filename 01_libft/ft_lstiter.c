@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:34:11 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/27 11:44:31 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/28 16:27:20 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -19,8 +19,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	 if (!lst || !f)
-                return ;
-	 ft_lstiter(lst->next, f);
-	 (f)(lst->content);
+	if (!lst || !f)
+		return ;
+	ft_lstiter(lst->next, f);
+	(f)(lst->content);
 }

@@ -6,7 +6,7 @@
 /*   By: zengying <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 22:41:14 by zengying          #+#    #+#             */
-/*   Updated: 2023/09/27 13:06:39 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/28 18:50:19 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stddef.h>
-# include <stdio.h>
 
 typedef struct s_list
 {

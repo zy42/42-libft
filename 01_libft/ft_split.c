@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 05:06:34 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/27 17:16:01 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/28 19:18:23 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,81 +16,84 @@
 ** obtained by splitting ’s’ using the character ’c’ as a delimiter. 
 ** The array must end with a NULL pointer.
 */
-/*static void	*set_memory(char **arr_2d, int index, size_t size)
-{
-	char	*arr;
 
-	arr = (char *) malloc(sizeof(char) * size);
-	if (arr)
-		return (arr);
-	while (index  >= 0)
-	{
-		free(arr_2d[index]);
-		index--;
-	}
-	free(arr_2d);
-	return (NULL);
-}
-*/
-static size_t arr_size(char const *s, char c)
+static size_t	arr_size(char const *s, char c)
 {
-	size_t i = 0;
-	size_t j = 0;
-	while (*s)
-        {
-                j = 0;
-		while (*s != c && *s)
-		{
-			s++;
-			j++;
-		}
-                if (j > 0)
-                        i++;
-        }
-	return (i);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char			**arr;
-	size_t	arr_ele;
 	size_t	i;
+	size_t	j;
 	size_t	start;
 
-	
-	arr_ele = 0;
 	i = 0;
-	if (! (arr = (char **) malloc(sizeof(char *) * arr_size(s, c))))
-		return (NULL);
-	while (s[i] && arr_ele < arr_size(s,c))
+	j = 0;
+	while (s[i])
 	{
-		while (s[i] != c && s[i])
+		while (s[i] == c && s[i])
 			i++;
 		start = i;
+		while (s[i] != c && s[i])
+			i++;
+		if (i > start)
+			j++;
+	}
+	return (j);
+}
+
+static void	*free_arr(char **arr, size_t index)
+{
+	while (arr[index])
+	{
+		free(arr[index]);
+		index--;
+	}
+	free(arr);
+	return (NULL);
+}
+
+static void	fill_arr(char const*s, char c, char **arr, size_t len)
+{
+	size_t	i;
+	size_t	start;
+	size_t	arr_ele;
+
+	i = 0;
+	arr_ele = 0;
+	while (s[i] && arr_ele <= len)
+	{
 		while (s[i] == c && s[i])
+			i++;
+		start = i;
+		while (s[i] != c && s[i])
 			i++;
 		if (i > start)
 		{
-                        arr[arr_ele] = (char *) malloc(sizeof(char) * (i - start));
-                        if (!arr[arr_ele])
-			{
-				free(arr);
-                                return (NULL);
-			}
-                        arr[arr_ele] = ft_substr(s,start, i - start);
+			arr[arr_ele] = ft_substr(s, start, i - start);
+			if (!arr[arr_ele])
+				free_arr(arr, arr_ele);
+			arr[arr_ele][i - start + 1] = '\0';
 			arr_ele++;
 		}
 	}
 	arr[arr_ele] = NULL;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**arr;
+
+	arr = (char **) malloc(sizeof(char *) * (arr_size(s, c) + 1));
+	if (!arr)
+		return (NULL);
+	fill_arr(s, c, arr, arr_size(s, c));
 	return (arr);
 }
 
 /*
 int main()
 {
-	char **arr = ft_split("hello!", 32);
+	//printf("%zu\n", arr_size("hello!xxxx", ' '));
+	char **arr = ft_split("   lorem   ipsum dolor     sit amet, 
+	consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
 	int i = 0;
-	//printf("%s\n", arr[0]);
 	while (arr[i])
 	{
 		printf("%s\n",arr[i]);

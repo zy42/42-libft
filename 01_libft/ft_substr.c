@@ -6,7 +6,7 @@
 /*   By: yzeng <yzeng@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 03:38:18 by yzeng             #+#    #+#             */
-/*   Updated: 2023/09/27 17:12:22 by yzeng            ###   ########.fr       */
+/*   Updated: 2023/09/28 16:17:37 by zengying         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			result = (char *)malloc((min_len + 1) * sizeof(char));
 			if (!result)
 				return (NULL);
-			result = ft_memcpy(result, s + start, min_len + 1);
+			result = ft_memcpy(result, s + start, min_len);
 			result[min_len] = '\0';
 			return (result);
 		}
